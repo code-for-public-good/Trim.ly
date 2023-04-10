@@ -15,6 +15,12 @@ mongoose.connect(`${DB_URL}`).then(() => {
     console.log(`Error connecting to DB: ${err}`)
 })
 
+// Allowing req.body to show data
+app.use(express.json())
+
+// Initalising Routes
+app.use("/api/shortcuts", require('./src/controllers/shortcut.controller'))
+
 // Starting the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
