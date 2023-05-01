@@ -1,7 +1,10 @@
 import express, { Express } from 'express'
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
 
+import passport from './src/configs/passportlocal.config';
 dotenv.config()
 
 const app: Express = express()
@@ -18,8 +21,29 @@ mongoose.connect(`${DB_URL}`).then(() => {
 // Allowing req.body to show data
 app.use(express.json())
 
+// Initialise Express session
+app.use(session({
+    secret: process.env.SESSION_SECRET || "GAaXpDwOekIU8ApS",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.DB_URL,
+        ttl: 24*60*60,
+        autoRemove: 'native'
+    }),
+    cookie: {
+        httpOnly: false,
+        maxAge: 1000*24*60*60
+    }
+}))
+
+// Initialise Passport.js
+app.use(passport.initialize())
+app.use(passport.session())
+
 // Initalising Routes
 app.use("/api/shortcuts", require('./src/controllers/shortcut.controller'))
+app.use("/api/users", require("./src/controllers/user.controller"))
 
 // Starting the server
 app.listen(PORT, () => {
