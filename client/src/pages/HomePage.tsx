@@ -2,19 +2,35 @@ import {
 	Box, Typography,
 } from '@mui/material'
 import React from 'react'
+import PublicShortener from '../components/urlShortenerForms/Shortener.public'
+import DescriptiveCard from '../components/DescriptiveCard'
 
 export default function HomePage() {
 	return (
-		<Box display={'flex'} height={'calc(100vh - 100px)'}>
+		<Box
+			display={'flex'}
+			height={'calc(100vh - 100px)'}
+			justifyContent={'center'}
+			alignItems={'center'}
+			marginRight={'100px'}
+			marginLeft={'100px'}
+		>
 			<Box>
-				<Typography variant='h1' fontSize={'2rem'} fontWeight={700} color={'#433f8f'}>
+				<Typography variant='h1' fontSize={'3rem'} fontWeight={700} color={'#433f8f'}>
 					Generate Custom Short Links!
 				</Typography>
-				<Typography variant='body1' fontSize={'1rem'}>
+				<Typography variant='body1' fontSize={'1rem'} mt={2}>
 					Trim.ly is a url shortener that allows you to create short links
-					from those long web addresses. It allows you to engage with your customers.
-					Get Started now!
+					from those long web addresses.
 				</Typography>
+				<Typography variant='body1' fontSize={'1rem'} mb={10}>
+					Connect with your customers with much greater ease! Get started now!
+				</Typography>
+				<PublicShortener />
+				<Typography variant='h2' fontSize={'2rem'} fontWeight={700} color={'#433f8f'} mt={5}>
+					Short Link, Big impact
+				</Typography>
+				<DescriptiveCard />
 			</Box>
 		</Box>
 	)

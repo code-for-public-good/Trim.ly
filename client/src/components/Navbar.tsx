@@ -114,7 +114,7 @@ export default function Navbar() {
                         <Link href='/' underline='none' sx={{ 'color': 'black', 'fontSize': '1rem' }}>
                             Signin
                         </Link>
-                        <Button variant='contained' size='large' sx={{ backgroundColor: '#8191c9', ":hover": { backgroundColor: '#636da3' } }}>
+                        <Button variant='contained' size='large' sx={{ backgroundColor: '#8191c9', ":hover": { backgroundColor: '#65689e' } }}>
                             Signup
                         </Button>
                     </Stack>
