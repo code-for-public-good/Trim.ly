@@ -3,8 +3,7 @@ import { IShortcut } from '../interfaces/shortcut.interface'
 
 const shortcutSchema = new mongoose.Schema<IShortcut>({
     shortcut: {
-        type: String,
-        required: [true, 'Shortcut field missing']
+        type: String
     },
 
     original: {
@@ -35,6 +34,13 @@ const shortcutSchema = new mongoose.Schema<IShortcut>({
     password: {
         type: String
     }
+})
+
+shortcutSchema.pre('save', function(next) {
+    if (this.shortcut === undefined) {
+        this.shortcut = this._id
+    }
+    next()
 })
 
 const Shortcut = mongoose.model<IShortcut>("Shortcuts", shortcutSchema)

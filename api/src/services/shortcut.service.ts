@@ -12,7 +12,7 @@ const addShortcut = async (req:Request, res:Response) => {
 
     const ownerId = "abc123"
 
-    const shortcutPresent = await Shortcut.findOne({shortcut: shortcut})
+    const shortcutPresent = shortcut === undefined ? false : await Shortcut.findOne({shortcut: shortcut})
 
     if (shortcutPresent) {
         res.status(400).json({
