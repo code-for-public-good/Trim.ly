@@ -29,13 +29,28 @@ export default function HomePage() {
 					Connect with your customers with much greater ease! Get started now!
 				</Typography>
 				<PublicShortener />
-				<Typography variant='h2' fontSize={'2rem'} fontWeight={700} color={'#433f8f'} mt={5}>
-					Short Link, Big impact
+				<Typography variant='h2' fontSize={'2rem'} fontWeight={700} color={'#433f8f'} mt={8}>
+					Short Link, Big Impact
 				</Typography>
-				<Box mt={5} display={'flex'} justifyContent={'space-between'}>
-					<DescriptiveCard title={'Main Descriptor'} description={'Subtitle'} icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}/>
-					<DescriptiveCard title={'Main Descriptor'} description={'Subtitle'} icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}/>
-					<DescriptiveCard title={'Main Descriptor'} description={'Subtitle'} icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}/>
+				<Typography variant='body1' fontSize={'1rem'} mt={2} mb={8}>
+					Use this intuitive URL shortening service to customise your links and share them with ease.
+				</Typography>
+				<Box mt={5} display={'flex'} justifyContent={'space-between'} gap={5}>
+					<DescriptiveCard 
+						title={'Free'} 
+						description={'Trim.ly is a free of charge service to use with no limits on the number of links that can be created.'} 
+						icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}
+					/>
+					<DescriptiveCard 
+						title={'Analyse Clicks'} 
+						description={'Check out how your links are performing based on comprehensive statistics.'} 
+						icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}
+					/>
+					<DescriptiveCard 
+						title={'History'} 
+						description={'Trim.ly keeps a list of your past links so you can reuse them when needed!'} 
+						icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}
+					/>
 				</Box>
 			</Box>
 		</Box>
