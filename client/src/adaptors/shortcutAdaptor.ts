@@ -7,6 +7,5 @@ export const postShortcut = (original: String) => {
     .post(BASE + "/add", {
         original: original
     })
-
     return res
 }
