@@ -55,10 +55,12 @@ const getShortcut = async (req:Request, res:Response) => {
 
     if (shortcutPresent && shortcutPresent.password === undefined) {
         res.status(200).json({
+            type: 'success',
             redirect: shortcutPresent.original
         })
     } else if (shortcutPresent && shortcutPresent.password) {
         res.status(200).json({
+            type: "auth",
             redirect: `/verify/${shortcut}`,
         })
     }

@@ -1,22 +1,29 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import FeaturesPage from './pages/FeaturesPage';
 import AboutPage from './pages/AboutPage';
+import RedirectPage from './pages/RedirectPage';
+import WithoutNavBarLayout from './components/layouts/WithoutNavBarLayout';
+import WithNavBarLayout from './components/layouts/WithNavBarLayout';
 
 function App() {
 	return (
 		<div className="App">
 			<BrowserRouter>
-					<Navbar></Navbar>
-					<Routes>
-						<Route path='/' element={<HomePage />}/>
-						<Route path='/features' element={<FeaturesPage />}/>
-						<Route path='/about' element={<AboutPage />}/>
-					</Routes>
-				</BrowserRouter>
+				<Routes>
+					<Route element={<WithoutNavBarLayout />}>
+						<Route path='/:shortcut' element={<RedirectPage />} />
+					</Route>
+					<Route element={<WithNavBarLayout />}>
+						<Route path='/' element={<Navigate to="/app" />} />
+						<Route path='/app' element={<HomePage />} />
+						<Route path='/app/features' element={<FeaturesPage />} />
+						<Route path='/app/about' element={<AboutPage />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

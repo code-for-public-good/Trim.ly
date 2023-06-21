@@ -1,5 +1,4 @@
 import { Card, CardContent, Typography, Box } from '@mui/material'
-import AcUnitIcon from '@mui/icons-material/AcUnit';
 import React from 'react'
 import { descriptiveCardProps } from '../interfaces';
 
