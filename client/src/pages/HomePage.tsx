@@ -1,7 +1,9 @@
 import {
 	Box, Typography,
 } from '@mui/material'
-import AcUnitIcon from '@mui/icons-material/AcUnit';
+import MoneyOffIcon from '@mui/icons-material/MoneyOff';
+import InsightsIcon from '@mui/icons-material/Insights';
+import HistoryIcon from '@mui/icons-material/History';
 import React from 'react'
 
 import PublicShortener from '../components/urlShortenerForms/Shortener.public'
@@ -39,17 +41,17 @@ export default function HomePage() {
 					<DescriptiveCard 
 						title={'Free'} 
 						description={'Trim.ly is a free of charge service to use with no limits on the number of links that can be created.'} 
-						icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}
+						icon={<MoneyOffIcon sx={{color: '#433f8f'}}/>}
 					/>
 					<DescriptiveCard 
 						title={'Analyse Clicks'} 
 						description={'Check out how your links are performing based on comprehensive statistics.'} 
-						icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}
+						icon={<InsightsIcon sx={{color: '#433f8f'}}/>}
 					/>
 					<DescriptiveCard 
 						title={'History'} 
 						description={'Trim.ly keeps a list of your past links so you can reuse them when needed!'} 
-						icon={<AcUnitIcon sx={{color: '#433f8f'}}/>}
+						icon={<HistoryIcon sx={{color: '#433f8f'}}/>}
 					/>
 				</Box>
 			</Box>
