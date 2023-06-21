@@ -40,9 +40,8 @@ export default function Navbar() {
     
     return (
         <AppBar
-            color='default'
             elevation={0}
-            sx={{ height: '100px' }}
+            sx={{ height: '100px', backgroundColor:'white' }}
             position='static'
         >
             <Toolbar sx={{ height: '100%' }}>

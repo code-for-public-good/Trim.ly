@@ -8,7 +8,7 @@ export default function PublicShortener() {
     const [shortcut, setShortcut] = useState("")
 
     return (
-        <Paper elevation={0} sx={{ backgroundColor: '#fafaff' }}>
+        <Paper elevation={0}>
             {
                 shortcut.length === 0 ?
                     <UrlInput setShortcut={setShortcut} /> :
