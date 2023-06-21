@@ -61,7 +61,7 @@ export default function Navbar() {
                         alignItems={'center'}
                     >
                         <Link
-                            href='/'
+                            href='/app'
                             underline='none'
                             sx={{
                                 'color': 'black',
@@ -75,7 +75,7 @@ export default function Navbar() {
                             Home
                         </Link>
                         <Link
-                            href='/features'
+                            href='/app/features'
                             underline='none'
                             sx={{
                                 'color': 'black',
@@ -89,7 +89,7 @@ export default function Navbar() {
                             Features
                         </Link>
                         <Link
-                            href='/about'
+                            href='/app/about'
                             underline='none'
                             marginLeft={10}
                             sx={{

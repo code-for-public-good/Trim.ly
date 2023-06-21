@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import cors from 'cors'
 
 import passport from './src/configs/passportlocal.config';
 dotenv.config()
@@ -17,6 +18,12 @@ mongoose.connect(`${DB_URL}`).then(() => {
 }).catch(err => {
     console.log(`Error connecting to DB: ${err}`)
 })
+
+// Cors Configuration
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}))
 
 // Allowing req.body to show data
 app.use(express.json())

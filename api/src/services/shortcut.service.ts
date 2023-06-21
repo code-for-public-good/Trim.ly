@@ -25,9 +25,10 @@ const addShortcut = async (req:Request, res:Response) => {
             password: password === undefined ? undefined : await bcrypt.hash(password, 10),
             clickLimit: limitOfClicks,
             owner: ownerId
-        }).then(_ => {
+        }).then(result => {
             res.status(200).json({
-                message: "success"
+                message: "success",
+                shortcut: result.shortcut
             })
         }).catch(error => {
             res.status(400).json({
@@ -54,10 +55,12 @@ const getShortcut = async (req:Request, res:Response) => {
 
     if (shortcutPresent && shortcutPresent.password === undefined) {
         res.status(200).json({
+            type: 'success',
             redirect: shortcutPresent.original
         })
     } else if (shortcutPresent && shortcutPresent.password) {
         res.status(200).json({
+            type: "auth",
             redirect: `/verify/${shortcut}`,
         })
     }

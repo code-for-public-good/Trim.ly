@@ -7,6 +7,12 @@ export const postShortcut = (original: String) => {
     .post(BASE + "/add", {
         original: original
     })
+    return res
+}
+
+export const getShortcut = (shortcut: string ) => {
+    const res = axios
+    .get(`${BASE}/retrieve/${shortcut}`)
 
     return res
 }
