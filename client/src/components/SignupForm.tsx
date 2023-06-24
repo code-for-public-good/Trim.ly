@@ -2,6 +2,7 @@ import { Button, Dialog, DialogContent, DialogContentText, DialogTitle, Link, Ty
 import React, { useState } from 'react'
 import { signupFormProps } from '../interfaces'
 import AuthTextField from './AuthTextField'
+import { postUser } from '../adaptors/userAdaptor'
 
 export default function SignupForm(props: signupFormProps) {
 
@@ -12,9 +13,9 @@ export default function SignupForm(props: signupFormProps) {
     const [password, setPassword] = useState("")
 
     const signup = () => {
-        console.log(nickname)
-        console.log(email)
-        console.log(password)
+        postUser(nickname, email, password).then(res => {
+            console.log(res.data)
+        })
     }
 
     return (
@@ -57,7 +58,6 @@ export default function SignupForm(props: signupFormProps) {
                     Already have an account? <Link color={"#433f8f"} sx={{cursor: 'pointer'}}>Log in</Link>
                 </Typography>
             </DialogContent>
-
         </Dialog>
     )
 }
