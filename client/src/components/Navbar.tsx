@@ -8,7 +8,8 @@ import {
     Link 
 } from '@mui/material'
 import { useLocation } from "react-router-dom"
-import React from 'react'
+import React, { useState } from 'react'
+import SignupForm from './SignupForm'
 
 const navBarDotTransparent = {
     'display': 'inline-block',
@@ -35,8 +36,18 @@ const navBarDotColored = {
 }
 
 export default function Navbar() {
+
+    const [signupModalOpen, setSignupModalOpen] = useState(false)
     
     const location = useLocation();
+
+    const signupOnClick = () => {
+        setSignupModalOpen(true)
+    }
+
+    const signupOnClose = () => {
+        setSignupModalOpen(false)
+    }
     
     return (
         <AppBar
@@ -113,11 +124,15 @@ export default function Navbar() {
                         <Link href='/' underline='none' sx={{ 'color': 'black', 'fontSize': '1rem' }}>
                             Signin
                         </Link>
-                        <Button variant='contained' size='large' sx={{ backgroundColor: '#8191c9', ":hover": { backgroundColor: '#65689e' } }}>
+                        <Button onClick={signupOnClick} variant='contained' size='large' sx={{ backgroundColor: '#8191c9', ":hover": { backgroundColor: '#65689e' } }}>
                             Signup
                         </Button>
                     </Stack>
                 </Container>
+                <SignupForm 
+                    open={signupModalOpen}
+                    onClose={signupOnClose}
+                />
             </Toolbar>
         </AppBar>
     )
