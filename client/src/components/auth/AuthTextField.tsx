@@ -1,10 +1,17 @@
 import { TextField, Typography } from '@mui/material'
 import React from 'react'
-import { authTextFieldProps } from '../interfaces'
+import { authTextFieldProps } from '../../interfaces'
 
 export default function AuthTextField(props: authTextFieldProps) {
     
-    const { textFieldLabel, textFieldPlaceholder, textFieldType, setField } = props
+    const {
+        textFieldLabel, 
+        textFieldPlaceholder, 
+        textFieldType, 
+        setField, 
+        error,
+        setError
+    } = props
     
     return (
         <>
@@ -12,11 +19,13 @@ export default function AuthTextField(props: authTextFieldProps) {
             <TextField
                 fullWidth
                 size='small'
+                error={error.length > 0}
+                helperText={error}
                 type={textFieldType}
                 variant='outlined'
                 margin='dense'
                 placeholder={textFieldPlaceholder}
-                onChange={e => setField(e.target.value)}
+                onChange={e => {setField(e.target.value); setError("")}}
             />
         </>
     )

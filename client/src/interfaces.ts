@@ -21,9 +21,16 @@ export interface signupFormProps {
     onClose: () => void
 }
 
+export interface signinFormProps {
+    open: boolean,
+    onClose: () => void
+}
+
 export interface authTextFieldProps {
     textFieldLabel: string,
     textFieldPlaceholder: string,
     textFieldType: string,
-    setField: Dispatch<SetStateAction<string>>
+    setField: Dispatch<SetStateAction<string>>,
+    error: string,
+    setError: Dispatch<SetStateAction<string>>
 }

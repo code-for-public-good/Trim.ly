@@ -7,6 +7,8 @@ import AboutPage from './pages/AboutPage';
 import RedirectPage from './pages/RedirectPage';
 import WithoutNavBarLayout from './components/layouts/WithoutNavBarLayout';
 import WithNavBarLayout from './components/layouts/WithNavBarLayout';
+import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
+import MainLandingPage from './pages/MainLandingPage';
 
 function App() {
 	return (
@@ -16,6 +18,9 @@ function App() {
 					<Route element={<WithoutNavBarLayout />}>
 						<Route path='/:shortcut' element={<RedirectPage />} />
 					</Route>
+					<Route element={<ProtectedRoute />}>
+                        <Route path='/main' element={<MainLandingPage />} />
+                    </Route>
 					<Route element={<WithNavBarLayout />}>
 						<Route path='/' element={<Navigate to="/app" />} />
 						<Route path='/app' element={<HomePage />} />

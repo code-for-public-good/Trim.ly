@@ -12,3 +12,20 @@ export const postUser = (nickname: string, email:string, password:string) => {
 
     return res
 }
+
+export const postSignIn = (email:string, password:string) => {
+    const res = axios
+    .post(`${BASE}/login`, {
+        email: email,
+        password: password
+    }, {withCredentials: true})
+
+    return res
+}
+
+export const checkSignIn = () => {
+    const res = axios
+    .get(`${BASE}/issignedin`, {withCredentials: true})
+
+    return res
+}

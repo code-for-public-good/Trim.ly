@@ -15,11 +15,25 @@ router.get('/responses/success', (req, res) => {
     })
 })
 router.get('/responses/failure', (req, res) => {
-    res.status(200).json({
-        message: "Authenitcation failure"
-    })
+
+    const message = req.session.messages?.at(-1)
+    if (message?.charAt(0) === "E") {
+        res.status(200).json({
+            err: {
+                email: message
+            }
+        })
+    } else {
+        res.status(200).json({
+            err: {
+                password: message
+            }
+        })
+    }
 })
 
 router.delete('/logout', userService.signOut)
+
+router.get("/issignedin", userService.isSignedIn)
 
 module.exports = router
