@@ -21,8 +21,9 @@ mongoose.connect(`${DB_URL}`).then(() => {
 
 // Cors Configuration
 app.use(cors({
-    origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+    origin: process.env.FRONT_END,
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+    credentials: true
 }))
 
 // Allowing req.body to show data
@@ -40,7 +41,7 @@ app.use(session({
     }),
     cookie: {
         httpOnly: false,
-        maxAge: 1000*24*60*60
+        maxAge: 1000*24*60*60,
     }
 }))
 

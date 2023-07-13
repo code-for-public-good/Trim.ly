@@ -8,7 +8,9 @@ import {
     Link 
 } from '@mui/material'
 import { useLocation } from "react-router-dom"
-import React from 'react'
+import React, { useState } from 'react'
+import SignupForm from './auth/SignupForm'
+import SigninForm from './auth/SigninForm'
 
 const navBarDotTransparent = {
     'display': 'inline-block',
@@ -35,8 +37,23 @@ const navBarDotColored = {
 }
 
 export default function Navbar() {
+
+    const [signupModalOpen, setSignupModalOpen] = useState(false)
+    const [signinModalOpen, setSigninModalOpen] = useState(false)
     
     const location = useLocation();
+
+    const signupOnClick = () => {
+        setSignupModalOpen(true)
+    }
+
+    const signupOnClose = () => {
+        setSignupModalOpen(false)
+    }
+
+    const signinOnClose = () => {
+        setSigninModalOpen(false)
+    }
     
     return (
         <AppBar
@@ -65,7 +82,7 @@ export default function Navbar() {
                             sx={{
                                 'color': 'black',
                                 'fontSize': '1rem',
-                                '::before': location.pathname === '/' ? navBarDotColored : navBarDotTransparent,
+                                '::before': location.pathname === '/app' ? navBarDotColored : navBarDotTransparent,
                                 ':hover': {
                                     '::before': navBarDotColored
                                 }
@@ -79,7 +96,7 @@ export default function Navbar() {
                             sx={{
                                 'color': 'black',
                                 'fontSize': '1rem',
-                                '::before': location.pathname === '/features' ? navBarDotColored : navBarDotTransparent,
+                                '::before': location.pathname === '/app/features' ? navBarDotColored : navBarDotTransparent,
                                 ':hover': {
                                     '::before': navBarDotColored
                                 }
@@ -94,7 +111,7 @@ export default function Navbar() {
                             sx={{
                                 'color': 'black',
                                 'fontSize': '1rem',
-                                '::before': location.pathname === '/about' ? navBarDotColored : navBarDotTransparent,
+                                '::before': location.pathname === '/app/about' ? navBarDotColored : navBarDotTransparent,
                                 ':hover': {
                                     '::before': navBarDotColored
                                 }
@@ -110,14 +127,22 @@ export default function Navbar() {
                         justifyContent={'flex-end'}
                         alignItems={'center'}
                     >
-                        <Link href='/' underline='none' sx={{ 'color': 'black', 'fontSize': '1rem' }}>
-                            Signin
-                        </Link>
-                        <Button variant='contained' size='large' sx={{ backgroundColor: '#8191c9', ":hover": { backgroundColor: '#65689e' } }}>
+                        <Button onClick={() => setSigninModalOpen(true)} size='large' sx={{color:'black'}}>
+                            Sign in
+                        </Button>
+                        <Button onClick={signupOnClick} variant='contained' size='large' sx={{ backgroundColor: '#8191c9', ":hover": { backgroundColor: '#65689e' } }}>
                             Signup
                         </Button>
                     </Stack>
                 </Container>
+                <SignupForm 
+                    open={signupModalOpen}
+                    onClose={signupOnClose}
+                />
+                <SigninForm 
+                    open={signinModalOpen}
+                    onClose={signinOnClose}
+                />
             </Toolbar>
         </AppBar>
     )

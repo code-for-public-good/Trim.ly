@@ -36,7 +36,8 @@ const register: RequestHandler = (req, res) => {
 const signin: RequestHandler = (req, res, next) => {
     passport.authenticate("local", {
         successRedirect: '/api/users/responses/success', 
-        failureRedirect: '/api/users/responses/failure' 
+        failureRedirect: '/api/users/responses/failure',
+        failureMessage: true
     })(req, res, next)
 }
 
@@ -54,10 +55,17 @@ const signOut: RequestHandler = (req, res) => {
             })
         }
     })
-} 
+}
+
+const isSignedIn: RequestHandler = (req, res) => {
+    res.status(200).json({
+        isSignedIn: req.isAuthenticated()
+    })
+}
 
 export default {
     register,
     signin,
-    signOut
+    signOut,
+    isSignedIn
 }
