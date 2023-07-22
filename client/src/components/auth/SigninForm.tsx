@@ -44,6 +44,7 @@ export default function SigninForm(props: signinFormProps) {
                 }
                 onClose()
                 navigate("/main")
+                navigate(0)
             })
         }
 
