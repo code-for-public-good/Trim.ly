@@ -34,3 +34,13 @@ export interface authTextFieldProps {
     error: string,
     setError: Dispatch<SetStateAction<string>>
 }
+
+export interface navbarItemPrivateProps {
+    href: string,
+    title: string,
+    icon: React.ReactElement<SvgIconComponent>
+}
+
+export interface protectedRouteProps {
+    isProtected: boolean
+}

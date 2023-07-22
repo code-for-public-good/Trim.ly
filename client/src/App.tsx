@@ -9,8 +9,11 @@ import WithoutNavBarLayout from './components/layouts/WithoutNavBarLayout';
 import WithNavBarLayout from './components/layouts/WithNavBarLayout';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import MainLandingPage from './pages/MainLandingPage';
+import WithPrivateNavBarLayout from './components/layouts/WithPrivateNavBarLayout';
+import SettingsPage from './pages/SettingsPage';
 
 function App() {
+
 	return (
 		<div className="App">
 			<BrowserRouter>
@@ -18,14 +21,19 @@ function App() {
 					<Route element={<WithoutNavBarLayout />}>
 						<Route path='/:shortcut' element={<RedirectPage />} />
 					</Route>
-					<Route element={<ProtectedRoute />}>
-                        <Route path='/main' element={<MainLandingPage />} />
-                    </Route>
-					<Route element={<WithNavBarLayout />}>
-						<Route path='/' element={<Navigate to="/app" />} />
-						<Route path='/app' element={<HomePage />} />
-						<Route path='/app/features' element={<FeaturesPage />} />
-						<Route path='/app/about' element={<AboutPage />} />
+					<Route element={<ProtectedRoute isProtected={true} />}>
+						<Route element={<WithPrivateNavBarLayout />}>
+							<Route path='/main' element={<MainLandingPage />} />
+							<Route path='/settings' element={<SettingsPage />}/>
+						</Route>
+					</Route>
+					<Route element={<ProtectedRoute isProtected={false} />}>
+						<Route element={<WithNavBarLayout />}>
+							<Route path='/' element={<Navigate to="/app" />} />
+							<Route path='/app' element={<HomePage />} />
+							<Route path='/app/features' element={<FeaturesPage />} />
+							<Route path='/app/about' element={<AboutPage />} />
+						</Route>
 					</Route>
 				</Routes>
 			</BrowserRouter>
