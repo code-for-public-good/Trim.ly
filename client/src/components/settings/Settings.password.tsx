@@ -7,14 +7,19 @@ export default function SettingsPassword() {
             <CardContent>
                 <Grid container spacing={3}>
                     <Grid item md={4} xs={12}>
-                        <Typography variant='h6' textAlign={'left'}>
+                        <Typography variant='h6' textAlign={'left'} fontWeight={'bold'}>
                             Change Password
                         </Typography>
                     </Grid>
                     <Grid item md={8} xs={12}>
                         <Stack flexDirection={'row'} alignItems={'center'}>
-                            <TextField fullWidth size='medium'/>
-                            <Button sx={{ ml: 3 }}>Save</Button>
+                            <TextField
+                                fullWidth
+                                size='medium'
+                                label="Password"
+                                type='password'
+                            />
+                            <Button sx={{ ml: 3, textTransform: "none" }}>Save</Button>
                         </Stack>
                     </Grid>
                 </Grid>

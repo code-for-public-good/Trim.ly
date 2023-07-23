@@ -30,9 +30,28 @@ export const checkSignIn = () => {
     return res
 }
 
+export const getUserInfo = () => {
+    const res = axios
+    .get(`${BASE}/userinfo`, {withCredentials: true})
+
+    return res
+}
+
 export const signOut = () => {
     const res = axios
     .delete(`${BASE}/logout`, {withCredentials: true})
 
+    return res
+}
+
+export const modifyUserInfo = (field: string, updatedValue: string) => {
+    const res = axios
+    .put(`${BASE}/modifyuserinfo`, {field: field, update: updatedValue}, {withCredentials: true})
+    .then(res => {
+        return res.data
+    })
+    .catch(err => {
+        return err.response.data
+    })
     return res
 }

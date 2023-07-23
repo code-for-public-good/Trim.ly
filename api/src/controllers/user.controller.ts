@@ -15,7 +15,6 @@ router.get('/responses/success', (req, res) => {
     })
 })
 router.get('/responses/failure', (req, res) => {
-
     const message = req.session.messages?.at(-1)
     if (message?.charAt(0) === "E") {
         res.status(200).json({
@@ -31,9 +30,12 @@ router.get('/responses/failure', (req, res) => {
         })
     }
 })
+router.get("/issignedin", userService.isSignedIn)
+router.get("/userinfo", userService.userInfo)
+
+router.put("/modifyuserinfo", userService.modifyUserInfo)
 
 router.delete('/logout', userService.signOut)
 
-router.get("/issignedin", userService.isSignedIn)
 
 module.exports = router
