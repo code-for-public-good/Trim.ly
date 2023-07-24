@@ -1,9 +1,12 @@
 import { Button, Card, CardContent, Grid, Stack, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { getUserInfo, modifyUserInfo } from '../../adaptors/userAdaptor'
+import { settingsAccountProps } from '../../interfaces'
 
-export default function SettingsAccount() {
-    
+export default function SettingsAccount(props: settingsAccountProps) {
+
+    const { setSnackBarMessage, openSnackBar } = props
+
     const [nickname, setNickname] = useState("")
     const [email, setEmail] = useState("")
 
@@ -28,7 +31,8 @@ export default function SettingsAccount() {
             return
         }
         modifyUserInfo("nickname", nickname).then(res => {
-            console.log(res.data)
+            setSnackBarMessage(res.message)
+            openSnackBar()
         })
     }
 
@@ -43,7 +47,8 @@ export default function SettingsAccount() {
                 setEmailError(res.err)
                 return
             }
-            console.log(res.message)
+            setSnackBarMessage(res.message)
+            openSnackBar()
         })
     }
 

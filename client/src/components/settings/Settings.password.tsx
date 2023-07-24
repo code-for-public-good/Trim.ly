@@ -1,7 +1,30 @@
-import { Button, Card, CardContent, Grid, Stack, TextField, Typography } from '@mui/material'
-import React from 'react'
+import { Button, Card, CardContent, Grid, IconButton, Stack, TextField, Typography } from '@mui/material'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import React, { useState } from 'react'
+import { settingsAccountProps } from '../../interfaces'
+import { modifyUserInfo } from '../../adaptors/userAdaptor';
 
-export default function SettingsPassword() {
+export default function SettingsPassword(props: settingsAccountProps) {
+
+    const { setSnackBarMessage, openSnackBar } = props
+
+    const [showPassword, setShowPassword] = useState(false)
+    const [password, setPassword] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+
+    const handleChangePasswordButton = () => {
+        if (password.length < 8) {
+            setPasswordError("Password is less than 8 characters")
+            return
+        }
+
+        modifyUserInfo("password", password).then(res => {
+            setSnackBarMessage(res.message)
+            openSnackBar()
+        })
+    }
+
     return (
         <Card sx={{ boxShadow: "rgba(0, 0, 0, 0.04) 0px 5px 22px, rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px" }}>
             <CardContent>
@@ -17,9 +40,19 @@ export default function SettingsPassword() {
                                 fullWidth
                                 size='medium'
                                 label="Password"
-                                type='password'
+                                type={showPassword ? "text" : "password"}
+                                onChange={(e) => { setPassword(e.target.value); setPasswordError("") }}
+                                error={passwordError.length > 0}
+                                helperText={passwordError}
+                                InputProps={{
+                                    endAdornment: (
+                                        <IconButton onClick={() => {showPassword ? setShowPassword(false) : setShowPassword(true)}}>
+                                            {showPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
+                                        </IconButton>
+                                    )
+                                }}
                             />
-                            <Button sx={{ ml: 3, textTransform: "none" }}>Save</Button>
+                            <Button sx={{ ml: 3, textTransform: "none" }} onClick={handleChangePasswordButton}>Save</Button>
                         </Stack>
                     </Grid>
                 </Grid>
