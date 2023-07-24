@@ -101,7 +101,8 @@ const modifyUserInfo: RequestHandler = async (req, res) => {
             })
         }
     } else if (field === "password") {
-        User.findByIdAndUpdate(id, {field: await bcrypt.hash(update, 10)}).then(_ => {
+        const newPassword =  await bcrypt.hash(update, 10)
+        User.findByIdAndUpdate(id, {"password": newPassword}).then(_ => {
             res.status(200).json({
                 message: "Password update successful"
             })
