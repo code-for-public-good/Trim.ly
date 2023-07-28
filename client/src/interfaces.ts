@@ -44,3 +44,8 @@ export interface navbarItemPrivateProps {
 export interface protectedRouteProps {
     isProtected: boolean
 }
+
+export interface settingsAccountProps {
+    setSnackBarMessage: Dispatch<SetStateAction<string>>,
+    openSnackBar: () => void
+}
