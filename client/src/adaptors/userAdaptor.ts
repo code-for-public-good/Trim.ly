@@ -33,14 +33,12 @@ export const checkSignIn = () => {
 export const getUserInfo = () => {
     const res = axios
     .get(`${BASE}/userinfo`, {withCredentials: true})
-
     return res
 }
 
 export const signOut = () => {
     const res = axios
     .delete(`${BASE}/logout`, {withCredentials: true})
-
     return res
 }
 
