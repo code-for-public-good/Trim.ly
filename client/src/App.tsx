@@ -11,6 +11,7 @@ import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import MainLandingPage from './pages/MainLandingPage';
 import WithPrivateNavBarLayout from './components/layouts/WithPrivateNavBarLayout';
 import SettingsPage from './pages/SettingsPage';
+import LinkGeneratorPage from './pages/LinkGeneratorPage';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
 						<Route element={<WithPrivateNavBarLayout />}>
 							<Route path='/main' element={<MainLandingPage />} />
 							<Route path='/settings' element={<SettingsPage />}/>
+							<Route path='/newlink' element={<LinkGeneratorPage />}/>
 						</Route>
 					</Route>
 					<Route element={<ProtectedRoute isProtected={false} />}>
