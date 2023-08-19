@@ -49,3 +49,16 @@ export interface settingsAccountProps {
     setSnackBarMessage: Dispatch<SetStateAction<string>>,
     openSnackBar: () => void
 }
+
+export interface privateGeneratorFieldProps {
+    placeholder: string,
+    icon: React.ReactElement<SvgIconComponent>,
+    isDisabled: boolean,
+    value: string
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    type: string
+}
+
+export interface privateGeneratorFieldWithSwitchProps extends privateGeneratorFieldProps {
+    switchTooltip: (isDisabled: boolean) => string
+}
